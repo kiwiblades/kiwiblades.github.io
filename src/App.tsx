@@ -13,7 +13,7 @@ function App() {
     <div>
       <Navbar page={page} onNavigate={setPage} />
       <div className="pt-16">
-        {page === "home" && <Home />}
+        {page === "home" && <Home onNavigate={setPage} />}
         {page === "projects" && <Projects />}
         {page === "tools" && <ToolMathTrainer />}
       </div>
