@@ -6,7 +6,7 @@ export default function Home() {
         </h1>
 
         <p className="mx-auto mt-6 text-lg leading-relaxed text-zinc-300">
-          I'm a computer science student who enjoys building projects with a heavy focus on the backend.
+          Backend-focused CS student building practical tools, especially in healthcare and human-centered software.
         </p>
       </div>
   );

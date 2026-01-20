@@ -1,4 +1,4 @@
-import { ArithmeticConfig, Problem, Operations } from "../types";
+import type { ArithmeticConfig, Problem, Operations } from "../types";
 
 // ---- helper functions ----
 

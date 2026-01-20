@@ -16,10 +16,10 @@ export default function ToolMathTrainer() {
     }
 
     // if user edits any settings manually, switch to custom
-    function updateConfig(patch: Partial<ArithmeticConfig>) {
-        setPreset("custom");
-        setConfig((prev) => ({ ...prev, ...patch }));
-    }
+    // function updateConfig(patch: Partial<ArithmeticConfig>) {
+    //     setPreset("custom");
+    //     setConfig((prev) => ({ ...prev, ...patch }));
+    // }
 
     // ---- session state ----
     const [session, setSession] = useState<SessionState>({ status: "idle" });
