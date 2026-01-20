@@ -2,8 +2,7 @@ import { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
-import ToolMathTrainer from "./pages/ToolMathTrainer";
-import './App.css'
+import ToolMathTrainer from "./pages/Tools";
 
 type Page = "home" | "projects" | "tools";
 
