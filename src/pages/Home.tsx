@@ -1,7 +1,10 @@
+import bg from "../assets/renderhoneycombv1.png";
+
 type Page = "home" | "projects" | "tools";
 
 export default function Home({ onNavigate }: { onNavigate: (p: Page) => void }) {
     return (
+      <div className="min-h-screen" style={{backgroundImage: `linear-gradient(rgba(0,0,0,0.20), rgba(0,0,0,0.20)), url(${bg})`, backgroundSize: "cover", backgroundPosition: "center",}}>
       <main className="mx-auto max-w-5xl px-6 py-20">
         <section className="relative overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-900/30 p-10">
           {/* Subtle glow */}
@@ -17,7 +20,6 @@ export default function Home({ onNavigate }: { onNavigate: (p: Page) => void }) 
 
             <p className="mt-6 text-lg leading-relaxed text-zinc-300">
               I'm Rye, a CS student interested in healthcare and human-centered software.
-              I like clean architecture, reliable systems, and projects that solve real problems.
             </p>
 
             {/* Call-to-actions */}
@@ -44,6 +46,25 @@ export default function Home({ onNavigate }: { onNavigate: (p: Page) => void }) 
             </div>
           </div>
         </section>
+
+        <section className="mt-6 relative overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-900/30 p-10">
+          {/* Subtle glow */}
+          <div className="pointer-events-none absolute -top-24 -left-24 h-72 w-72 rounded-full bg-violet-500/10 blur-3xl"/>
+          <div className="pointer-events-none absolute -bottom-24 -right-24 h-72 w-72 rounded-full bg-fuchsia-500/10 blur-3xl"/>
+
+          {/* About me */}
+          <div className="relative max-w-2xl">
+            <h1 className="text-5xl font-bold tracking-tight text-zinc-100">
+              About me
+            </h1>
+
+            <p className="mt-6 text-lg leading-relaxed text-zinc-300">
+              Test
+            </p>
+          </div>
+        
+        </section>
       </main>
+      </div>
   );
 }
