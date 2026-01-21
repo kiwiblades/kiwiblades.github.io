@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import type { Project } from "../data/projects";
-import { ExternalLink, Github, ChevronLeft, ChevronRight } from "lucide-react";
+import { ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
+import GithubIcon from "../assets/GitHub_Invertocat_White.svg"
 
 export default function ProjectCard({ project }: { project: Project }) {
     const { title, blurb, about, tags, images, links } = project;
@@ -89,7 +90,7 @@ export default function ProjectCard({ project }: { project: Project }) {
                             <a key={l.href} href={l.href} target="_blank" rel="nonreferrer"
                             className="inline-flex items-center gap-2 rounded-xl border border-zinc-700 bg-zinc-950/30 px-3 py-2 text-sm text-zinc-100
                            hover:bg-zinc-900">
-                            {isGithub ? <Github className="h-4 w-4" /> : <ExternalLink className="h-4 w-4" />}
+                            {isGithub ? <img src={GithubIcon} alt="" className="h-4 w-4" /> : <ExternalLink className="h-4 w-4" />}
                             {l.label}
                            </a>
                         );

@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Save } from "lucide-react";
+import GithubIcon from "../assets/GitHub_Invertocat_White.svg";
+import LinkedinIcon from "../assets/InBug-White.png";
 
 type Page = "home" | "projects" | "tools";
 
@@ -25,11 +27,11 @@ export function Navbar({
         <nav className="fixed top-0 z-20 w-full border-b border-zinc-800 bg-zinc-950/80 backdrop-blur">
             <div className="mx-auto flex justify-between px-6 py-4">
                 {/* Left */}
-                <div className="justify-self-start hover:animate-spin">
+                <div className="justify-self-start">
                     <button
                         onClick={() => go("home")}
                         aria-label="Home"
-                        className="rounded-xl p-2 hover:bg-zinc-800/60 transition">
+                        className="rounded-xl p-2 hover:bg-zinc-800/60 hover:opacity-75 transition">
                         <Save className="h-6 w-6 text-zinc-100" />
                     </button>
                 </div>
@@ -61,7 +63,23 @@ export function Navbar({
                 </div>
 
                 {/* Right */}
-                <div className="justify-self-end">
+                <div className="flex items-center gap-4">
+                    <a href="https://github.com/kiwiblades" target="_blank" className="hover:opacity-75">
+                        <img
+                            src={GithubIcon}
+                            alt=""
+                            className="h-6 w-6"
+                        />
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/brynn-armstrong-5251a8306/" target="_blank" className="hover:opacity-75">
+                        <img
+                            src={LinkedinIcon}
+                            alt=""
+                            className="h-6 w-6"
+                        />
+                    </a>
+
                     {/* Mobile menu button */}
                     <button
                         onClick={() => setOpen((v) => !v)}
