@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import type { Project } from "../data/projects";
-import { ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
+import { ExternalLink, Video, ChevronLeft, ChevronRight } from "lucide-react";
 import GithubIcon from "../assets/GitHub_Invertocat_White.svg"
 
 export default function ProjectCard({ project }: { project: Project }) {
@@ -23,7 +23,7 @@ export default function ProjectCard({ project }: { project: Project }) {
     }
 
     return (
-        <article className="group relative overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-950/40 shadow-sm backdrop-blur
+        <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-950/40 shadow-sm backdrop-blur
         transition hover:border-zinc-700">
             {/* Subtle shine */}
             <div className="pointer-events-none absolute inset-0 opacity-0 transition group-hover:opacity-100">
@@ -65,7 +65,8 @@ export default function ProjectCard({ project }: { project: Project }) {
             </div>
 
             {/* Content */}
-            <div className="relative p-5">
+            <div className="relative flex flex-1 flex-col p-5">
+                <div>
                 <h3 className="text-lg font-semibold tracking-tight text-zinc-100">
                     {title}
                 </h3>
@@ -82,15 +83,25 @@ export default function ProjectCard({ project }: { project: Project }) {
                     </div>
                 )}
 
+                {/* Expandable about */}
+                {about && open && (
+                    <div className="mt-4 rounded-xl border border-zinc-800 bg-zinc-950/30 p-4 text-sm text-zinc-300">
+                        {about}
+                    </div>
+                )}
+                </div>
+
                 {/* Actions */}
-                <div className="mt-5 flex flex-wrap items-center gap-2">
+                <div className="mt-auto pt-5 flex flex-wrap items-center gap-2">
                     {prettyLinks.map((l) => {
                         const isGithub = /github\.com/i.test(l.href);
+                        const isYoutube = /youtube\.com/i.test(l.href);
                         return (
-                            <a key={l.href} href={l.href} target="_blank" rel="nonreferrer"
+                            <a key={l.href} href={l.href} target="_blank" rel="noreferrer"
                             className="inline-flex items-center gap-2 rounded-xl border border-zinc-700 bg-zinc-950/30 px-3 py-2 text-sm text-zinc-100
                            hover:bg-zinc-900">
-                            {isGithub ? <img src={GithubIcon} alt="" className="h-4 w-4" /> : <ExternalLink className="h-4 w-4" />}
+                            {isGithub ? <img src={GithubIcon} alt="" className="h-4 w-4" /> : isYoutube ? <Video className="h-4 w-4" /> 
+                            : <ExternalLink className="h-4 w-4" />}
                             {l.label}
                            </a>
                         );
@@ -104,13 +115,6 @@ export default function ProjectCard({ project }: { project: Project }) {
                         </button>
                     )}
                 </div>
-
-                {/* Expandable about */}
-                {about && open && (
-                    <div className="mt-4 rounded-xl border border-zinc-800 bg-zinc-950/30 p-4 text-sm text-zinc-300">
-                        {about}
-                    </div>
-                )}
             </div>
         </article>
     );
