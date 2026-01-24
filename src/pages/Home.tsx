@@ -1,10 +1,14 @@
-import bg from "../assets/renderhoneycombv1.png";
+import { useEffect } from "react";
 
 type Page = "home" | "projects" | "tools";
 
-export default function Home({ onNavigate }: { onNavigate: (p: Page) => void }) {
+export default function Home({ onNavigate, setBg }: { onNavigate: (p: Page) => void; setBg: (url: string) => void }) {
+    useEffect(() => {
+      setBg("/renderhoneycombv1.png");
+    }, [setBg]);
+
+
     return (
-      <div className="min-h-screen" style={{backgroundImage: `linear-gradient(rgba(0,0,0,0.20), rgba(0,0,0,0.20)), url(${bg})`, backgroundSize: "cover", backgroundPosition: "center",}}>
       <main className="mx-auto max-w-5xl px-6 py-20">
         <section className="relative overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-900/30 p-10">
           {/* Subtle glow */}
@@ -65,6 +69,5 @@ export default function Home({ onNavigate }: { onNavigate: (p: Page) => void }) 
         
         </section>
       </main>
-      </div>
   );
 }

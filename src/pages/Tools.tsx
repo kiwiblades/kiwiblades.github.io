@@ -1,10 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
-
 import type { ArithmeticConfig, PresetId, SessionState } from "../trainer/types";
 import { PRESETS } from "../trainer/presets";
 import { startSession, submitAnswer, finishSession } from "../trainer/engine/session";
 
-export default function ToolMathTrainer() {
+export default function Tools() {
     // ---- config state ----
     const [preset, setPreset] = useState<PresetId>("easy");
     const [config, setConfig] = useState<ArithmeticConfig>(PRESETS.easy);
