@@ -1,5 +1,12 @@
+import Masonry from "react-masonry-css";
 import ProjectCard from "../components/ProjectCard";
 import { projects } from "../data/projects";
+
+const breakpoints = {
+    default: 3,
+    1024: 2,
+    640: 1,
+};
 
 export default function Projects() {
 
@@ -13,11 +20,15 @@ export default function Projects() {
             </section>
 
             {/* Project cards */}
-            <section className="mt-20 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <Masonry
+                breakpointCols={breakpoints}
+                className="mt-20 flex gap-6"
+                columnClassName="flex flex-col gap-6"
+            >
                 {projects.map((p) => (
                     <ProjectCard key={p.slug} project={p} />
                 ))}
-            </section>
+            </Masonry>
         </main>
     );
 }

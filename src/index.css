@@ -12,5 +12,10 @@ body {
   margin: 0;
   background: #1d1d24;
   color: #f4f4f5;
-  overscroll-behavior: none;
+  overscroll-behavior: none; /* prevents bounce upon scrolling to end of pages */
+}
+
+
+html {
+  overflow-y: scroll; /* keeps scroll bar element always visible */
 }

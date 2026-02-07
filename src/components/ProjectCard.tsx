@@ -23,7 +23,7 @@ export default function ProjectCard({ project }: { project: Project }) {
     }
 
     return (
-        <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-950/40 shadow-sm backdrop-blur
+        <article className="group relative flex flex-col overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-950/40 shadow-sm backdrop-blur 
         transition hover:border-zinc-700">
             {/* Subtle shine */}
             <div className="pointer-events-none absolute inset-0 opacity-0 transition group-hover:opacity-100">
@@ -66,7 +66,6 @@ export default function ProjectCard({ project }: { project: Project }) {
 
             {/* Content */}
             <div className="relative flex flex-1 flex-col p-5">
-                <div>
                 <h3 className="text-lg font-semibold tracking-tight text-zinc-100">
                     {title}
                 </h3>
@@ -84,12 +83,20 @@ export default function ProjectCard({ project }: { project: Project }) {
                 )}
 
                 {/* Expandable about */}
-                {about && open && (
-                    <div className="mt-4 rounded-xl border border-zinc-800 bg-zinc-950/30 p-4 text-sm text-zinc-300">
-                        {about}
+                {about && (
+                    <div
+                        className={[
+                        "mt-4 grid overflow-hidden transition-[grid-template-rows,opacity] duration-300 ease-out",
+                        open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0",
+                        ].join(" ")}
+                    >
+                        <div className="overflow-hidden">
+                        <div className="rounded-xl border border-zinc-800 bg-zinc-950/30 p-4 text-sm text-zinc-300">
+                            {about}
+                        </div>
+                        </div>
                     </div>
                 )}
-                </div>
 
                 {/* Actions */}
                 <div className="mt-auto pt-5 flex flex-wrap items-center gap-2">
