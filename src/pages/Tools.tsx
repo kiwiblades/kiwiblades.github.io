@@ -1,3 +1,4 @@
+import DrugShortage from "../components/tools/DrugShortage";
 import MathTrainer from "../components/tools/MathTrainer";
 
 export default function Tools() {
@@ -11,6 +12,9 @@ export default function Tools() {
 
            {/* Math trainer tool */}
            <MathTrainer />
+
+           {/* Drug shortage checker */}
+           <DrugShortage />
         </main>
     );
 }
