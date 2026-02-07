@@ -12,19 +12,18 @@ Includes a small "Tools" section where I showcase some miniprojects, and custom-
 - Responsive navbar with mobile menu
 - Hero section + sections for About, Projects and Tools
 - Math trainer tool (timed practice + stats)
+- FDA drug shortage search tool
 - Custom Blender-rendered background image
 
 ## Tech Stack
 - React + TypeScript
 - Vite
 - Tailwind CSS
-- lucide-react icons
 
 ## Getting Started (Local Dev)
 
 ### Prerequisites
-- Node.js
-- npm
+- Node.js + npm
 
 ## Credits / Assets
 - Background render created by me in Blender (guided by a tutorial):
