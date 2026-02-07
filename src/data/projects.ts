@@ -23,8 +23,9 @@ export const projects: Project[] = [
         slug: "sunrise",
         title: "Sunrise",
         blurb: "Mental health community support and medical adherence.",
-        about: "",
-        tags: ["JavaScript", "Express.JS", "PostgreSQL"],
+        about: "Sunrise was built as a semester-long project for Software Engineering II. It focuses on providing users a place to store medical and demographic"
+        + "information, receive medication and appointment reminders, and use an AI moderated chat forum to vent their stress.",
+        tags: ["JavaScript", "React", "Express.JS", "PostgreSQL"],
         images: [],
         links: [{ label: "", href: "https://www.youtube.com/watch?v=38e8BM6-y-0" }],
     }

@@ -1,12 +1,6 @@
-import { useEffect } from "react";
-
 type Page = "home" | "projects" | "tools";
 
-export default function Home({ onNavigate, setBg }: { onNavigate: (p: Page) => void; setBg: (url: string) => void }) {
-    useEffect(() => {
-      setBg("/renderhoneycombv1.png");
-    }, [setBg]);
-
+export default function Home({ onNavigate }: { onNavigate: (p: Page) => void }) {
 
     return (
       <main className="mx-auto max-w-5xl px-6 py-20">
@@ -23,7 +17,7 @@ export default function Home({ onNavigate, setBg }: { onNavigate: (p: Page) => v
             </h1>
 
             <p className="mt-6 text-lg leading-relaxed text-zinc-300">
-              I'm Rye, a CS student interested in healthcare and human-centered software.
+              Hey! I'm Rye, a CS student interested in healthcare and human-centered software.
             </p>
 
             {/* Call-to-actions */}
@@ -63,7 +57,9 @@ export default function Home({ onNavigate, setBg }: { onNavigate: (p: Page) => v
             </h1>
 
             <p className="mt-6 text-lg leading-relaxed text-zinc-300">
-              Test
+              Always looking for a new project! I'm a third year student, double majoring in Computer Science and Software Engineering.<br /><br />
+              Working in pharmacy has given me a strong curiosity for the medical field. Medical technology has a unique opportunity to directly improve
+              users' lives, starting with their physical wellbeing.
             </p>
           </div>
         

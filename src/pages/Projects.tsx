@@ -1,11 +1,7 @@
-import { useEffect } from "react";
 import ProjectCard from "../components/ProjectCard";
 import { projects } from "../data/projects";
 
-export default function Projects({ setBg }: { setBg: (url: string) => void }) {
-    useEffect(() => {
-        setBg("/renderhoneycombv2.png");
-    }, [setBg]);
+export default function Projects() {
 
     return (
         <main className="mx-auto max-w-5xl px-6 py-20">
