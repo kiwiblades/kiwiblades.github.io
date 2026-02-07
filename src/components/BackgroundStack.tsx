@@ -7,7 +7,6 @@ type BgStep = {
 
 export default function BackgroundStack({
   steps,
-  dim = 0.6, // 0..1 darkness overlay
   feather = 0.28, // 0..0.5 roughly; how much top/bottom fade
 }: {
   steps: BgStep[];

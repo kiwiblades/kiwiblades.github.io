@@ -18,7 +18,7 @@ function App() {
   return (
     <div className="min-h-screen relative">
       {/* Global background */}
-      <BackgroundStack steps={BG_STEPS} dim={0.2} feather={0.25} />
+      <BackgroundStack steps={BG_STEPS} feather={0.25} />
 
       {/* Dim overlay */}
       <div className="fixed inset-0 -z-10 bg-black/30 pointer-events-none"  />
