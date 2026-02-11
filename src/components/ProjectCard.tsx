@@ -1,5 +1,6 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect, useCallback } from "react";
 import type { Project } from "../data/projects";
+import useEmblaCarousel from "embla-carousel-react";
 import { ExternalLink, Video, ChevronLeft, ChevronRight } from "lucide-react";
 import GithubIcon from "../assets/GitHub_Invertocat_White.svg"
 
@@ -7,20 +8,40 @@ export default function ProjectCard({ project }: { project: Project }) {
     const { title, blurb, about, tags, images, links } = project;
 
     const [open, setOpen] = useState(false);
-    const [idx, setIdx] = useState(0);
+
+    const [emblaRef, emblaApi] = useEmblaCarousel({ loop: images.length > 1 });
+    const [selectedIdx, setSelectedIdx] = useState(0);
 
     const hasManyImages = images.length > 1;
-    const currentImage = images[Math.min(idx, images.length-1)];
-
     const prettyLinks = useMemo(() => links ?? [], [links]);
 
+    // keep counter in sync
+    const onSelect = useCallback(() => {
+        if (!emblaApi) return;
+        setSelectedIdx(emblaApi.selectedScrollSnap());
+    }, [emblaApi]);
+
+    useEffect(() => {
+        if (!emblaApi) return;
+        onSelect();
+        emblaApi.on("select", onSelect);
+        emblaApi.on("reInit", onSelect);
+        return () => {
+            emblaApi.off("select", onSelect);
+            emblaApi.off("reInit", onSelect);
+        };
+    }, [emblaApi, onSelect]);
+
+    // when switching projects, reset to the first slide
+    useEffect(() => {
+        if (!emblaApi) return;
+        emblaApi.scrollTo(0, true);
+        setSelectedIdx(0);
+    }, [project.slug, emblaApi]);
+
     // helpers for carousel images
-    function prev() {
-        setIdx((i) => (i-1+images.length) % images.length);
-    }
-    function next() {
-        setIdx((i) => (i+1) % images.length);
-    }
+    const prev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
+    const next = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
     return (
         <article className="group relative flex flex-col overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-950/40 shadow-sm backdrop-blur 
@@ -32,34 +53,49 @@ export default function ProjectCard({ project }: { project: Project }) {
 
             {/* Image */}
             <div className="relative aspect-video w-full overflow-hidden bg-zinc-900">
-                {currentImage ? (
-                    <img src={currentImage} alt={`${title} preview`} 
-                    className="h-full w-full object-cover transition duration-300 group-hover:scale-[1.02]" loading="lazy"
-                    />
+                {images?.length ? (
+                    <>
+                    {/* Embla viewport */}
+                    <div ref={emblaRef} className="h-full w-full overflow-hidden">
+                        {/* Embla container */}
+                        <div className="flex h-full">
+                            {images.map((src) => (
+                                <div key={src} className="min-w-0 flex-[0_0_100%]">
+                                    <img src={src} alt={`${title} preview`} loading="lazy"
+                                        className="h-full object-cover transition duration-300 group-hover:scale-[1.02]"
+                                        draggable={false}
+                                    />
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Slideshow controls */}
+                    {hasManyImages && (
+                        <div className={["absolute inset-x-3 bottom-3 z-20 flex items-center justify-between",
+                            "opacity-0 translate-y-1 transition group-hover:opacity-100 group-hover:translate-y-0",
+                            "focus-within:opacity-100 focus-within:translate-y-0"].join(" ")}>
+                            <button type="button" onClick={prev} 
+                                className="rounded-xl border border-zinc-700 bg-zinc-950/60 p-2 text-zinc-200 hover:bg-zinc-900"
+                                aria-label="Previous image">
+                            <ChevronLeft className="h-4 w-4" />
+                            </button>
+
+                            <div className="rounded-full border border-zinc-700 bg-zinc-950/60 px-3 py-1 text-xs text-zinc-200">
+                                {selectedIdx+1} / {images.length}
+                            </div>
+
+                            <button type="button" onClick={next} 
+                                className="rounded-xl border border-zinc-700 bg-zinc-950/60 p-2 text-zinc-200 hover:bg-zinc-900"
+                                aria-label="Next image">
+                                <ChevronRight className="h-4 w-4" />
+                            </button>
+                        </div>
+                    )}
+                </>
                 ) : (
                     <div className="flex h-full w-full items-center justify-center text-sm text-zinc-400">
                         No image yet
-                    </div>
-                )}
-
-                {/* Slideshow controls */}
-                {hasManyImages && (
-                    <div className="absolute inset-x-3 bottom-3 flex items-center justify-between">
-                        <button type="button" onClick={prev} 
-                        className="rounded-xl border border-zinc-700 bg-zinc-950/60 p-2 text-zinc-200 hover:bg-zinc-900"
-                        aria-label="Previous image">
-                            <ChevronLeft className="h-4 w-4" />
-                        </button>
-
-                        <div className="rounded-full border border-zinc-700 bg-zinc-950/60 px-3 py-1 text-xs text-zinc-200">
-                            {idx+1} / {images.length}
-                        </div>
-
-                        <button type="button" onClick={next} 
-                        className="rounded-xl border border-zinc-700 bg-zinc-950/60 p-2 text-zinc-200 hover:bg-zinc-900"
-                        aria-label="Next image">
-                            <ChevronRight className="h-4 w-4" />
-                        </button>
                     </div>
                 )}
             </div>

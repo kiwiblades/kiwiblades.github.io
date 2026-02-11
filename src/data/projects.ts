@@ -8,6 +8,9 @@ export type Project = {
     links?: { label: string; href: string }[];
 };
 
+const imgs = (slug: string, count: number, ext = "png") =>
+    Array.from({ length: count }, (_, i) => `/projects/${slug}/${i+1}.${ext}`);
+
 // all hardcoded project data exists here to declutter the design/page formatting space
 export const projects: Project[] = [
     {
@@ -46,5 +49,14 @@ export const projects: Project[] = [
         tags: ["Rust", "Docker"],
         images: [],
         links: [],
+    },
+    {
+        slug: "fallout-shelter",
+        title: "Fallout Shelter Exhibit",
+        blurb: "Living 'Under a Nuclear Sword of Damocles:' Elk City's Fallout Shelter Supplies.",
+        about: "This website was built during my time working at the Elk City Route 66 Museum, and acts as a virtual counterpart to the physical exhibit in the Old Town Museum.",
+        tags: ["HTML/CSS", "Research", "History"],
+        images: imgs("fallout-shelter", 2),
+        links: [{label: "Exhibit", href: "https://elkcitymuseumcomplex.weebly.com/exhibit.html" }],
     }
 ];
