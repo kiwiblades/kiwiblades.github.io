@@ -12,7 +12,7 @@ export default function Tools() {
 
            {/* Math trainer tool */}
            <MathTrainer />
-
+            <br></br>
            {/* Drug shortage checker */}
            <DrugShortage />
         </main>

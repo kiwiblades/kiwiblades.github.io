@@ -1,14 +1,21 @@
 export type OpenFdaShortage = {
     generic_name?: string;
-    brand_name?: string;
-    product_ndc?: string[];
-    manufacturer_name?: string;
+    
     route?: string;
     substance_name?: string;
     status?: string;
     availability?: string;
     shortage_reason?: string;
     update_date?: string;
+
+    openfda?: {
+        manufacturer_name?: string;
+        package_ndc?: string[]
+        brand_name?: string;
+    }
+
+    presentation?: string;
+
     [key: string]: unknown;
 };
 
@@ -29,11 +36,11 @@ export function buildSearchQuery(q: string) {
 
     // exact phrase matching for multi-word queries
     if (hasSpace) {
-        return `brand_name:"${safe}" OR generic_name:"${safe}"`;
+        return `openfda.brand_name:"${safe}" OR generic_name:"${safe}"`;
     }
 
     // single word, prefix wildcard
-    return `brand_name:${safe}* OR generic_name:${safe}*`;
+    return `openfda.brand_name:${safe}* OR generic_name:${safe}*`;
 }
 
 export async function fetchShortages(q: string, limit=10) {
@@ -47,6 +54,8 @@ export async function fetchShortages(q: string, limit=10) {
     if (!res.ok) {
         throw new Error(data?.error?.message ?? `Request failed (${res.status})`);
     }
+
+    console.log(data);
 
     return {
         total: data.meta?.results?.total ?? null,

@@ -80,7 +80,7 @@ export default function DrugShortage() {
             <input
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder='Try "amoxicillin" or "Ozempic"'
+                placeholder='Try "lisdex" or "nystatin"'
                 className={inputCls}
             />
 
@@ -153,8 +153,8 @@ export default function DrugShortage() {
 
                 <ul className="mt-3 grid gap-3">
                 {items.map((r, i) => {
-                    const title = r.generic_name || r.brand_name || "Unnamed drug";
-                    const subtitle = r.brand_name ? r.brand_name : null;
+                    const title = r.generic_name || r.openfda?.brand_name || "Unnamed drug";
+                    const subtitle = r.openfda?.brand_name ? r.openfda.brand_name : null;
 
                     return (
                     <li
@@ -188,10 +188,16 @@ export default function DrugShortage() {
                             {r.shortage_reason}
                             </div>
                         )}
-                        {r.product_ndc && (
+                        {r.openfda?.manufacturer_name && (
                             <div>
-                            <span className="text-zinc-400">Product NDC:</span>{" "}
-                            {r.product_ndc}
+                            <span className="text-zinc-400">Manufacturer Name:</span>{" "}
+                            {r.openfda.manufacturer_name}
+                            </div>
+                        )}
+                        {r.openfda?.package_ndc && (
+                            <div>
+                            <span className="text-zinc-400">Package NDC:</span>{" "}
+                            {r.openfda.package_ndc[0]}
                             </div>
                         )}
                         {r.update_date && (
