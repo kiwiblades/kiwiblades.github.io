@@ -3,7 +3,7 @@ import { Save } from "lucide-react";
 import GithubIcon from "../assets/GitHub_Invertocat_White.svg";
 import LinkedinIcon from "../assets/InBug-White.png";
 
-type Page = "home" | "projects" | "tools";
+type Page = "home" | "projects" | "tools" | "blog";
 
 export function Navbar({
     page,
@@ -58,6 +58,13 @@ export function Navbar({
                         page === "tools" ? linkActive : linkIdle
                         }`}>
                         Tools
+                    </button>
+                    <button
+                        onClick={() => go("blog")}
+                        className={`${linkBase} ${
+                        page === "blog" ? linkActive : linkIdle
+                        }`}>
+                        Blog
                     </button>
                     </div>
                 </div>

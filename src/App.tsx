@@ -3,9 +3,10 @@ import { Navbar } from './components/Navbar';
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
 import Tools from "./pages/Tools";
+import Blog from "./pages/Blog";
 import BackgroundStack from './components/BackgroundStack';
 
-type Page = "home" | "projects" | "tools";
+type Page = "home" | "projects" | "tools" | "blog";
 
 const BG_STEPS = [
   { id: "bg-home-1", src: "/renderhoneycombv1.png"},
@@ -30,6 +31,7 @@ function App() {
           {page === "home" && <Home onNavigate={setPage} />}
           {page === "projects" && <Projects />}
           {page === "tools" && <Tools />}
+          {page === "blog" && <Blog />}
         </div>
       </div>
     </div>
