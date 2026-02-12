@@ -30,3 +30,5 @@ Includes a small "Tools" section where I showcase some miniprojects, and custom-
   - "Create Easy Hexagon Grids in Blender 3.0 Geometrynodes!" by Cartesian Caramel: https://www.youtube.com/watch?v=T0HAw0EJMUs
 - HDRI environment:
   - "Beach Parking" - Greg Zaal & Rico Cilliers (Poly Haven): https://polyhaven.com/a/beach_parking
+- Favicon
+  - "material-symbols-light:terminal-sharp" by Google's material-design-icons: https://icones.js.org/collection/all?s=terminal&icon=material-symbols-light:terminal-sharp
