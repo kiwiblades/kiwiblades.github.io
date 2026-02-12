@@ -133,6 +133,13 @@ export function Navbar({
                         } text-left`}>
                         Tools
                         </button>
+                        <button
+                        onClick={() => go("blog")}
+                        className={`${linkBase} ${
+                            page === "blog" ? linkActive : linkIdle
+                        } text-left`}>
+                        Blog
+                        </button>
                     </div>
                     </div>
                 )}
