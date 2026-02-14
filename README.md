@@ -1,34 +1,68 @@
 # Portfolio
 
 Personal portfolio site built with React + TypeScript + Vite, styled with Tailwind CSS.
-Includes a small "Tools" section where I showcase some miniprojects, and custom-rendered assets.
 
-## Demo (WIP)
-- Live: kiwiblades.github.io/
+The site serves as both a project showcase and a long-term home for technical writing and small interactive tools.
 
-## Preview (WIP)
+Although the site itself is statically hosted, it includes a small serverless backend for interactive features such as a contact form.
 
-## Features (WIP)
+### Live:
+
+https://ryearmstrong.com
+
+## Features
+
+### Site
 - Responsive navbar with mobile menu
-- Hero section + sections for About, Projects and Tools
-- Math trainer tool (timed practice + stats)
-- FDA drug shortage search tool
-- Custom Blender-rendered background image
+- Custom 3D background rendered in Blender
+- Contact form with real email delivery
+
+### Tools
+- Math trainer (timed practice + stats tracking)
+- FDA drug shortage search tool (external API querying + filtering)
+
+### Backend / Infrastructure
+- Serverless contact form API using Cloudflare Workers
+- Email delivery via Resend
+- Input validation + sanitization
+- Origin restrictions + anti-spam protections
+- DNS-verified sending domain
 
 ## Tech Stack
-- React + TypeScript
+
+### Frontend
+- TypeScript
+- React
 - Vite
 - Tailwind CSS
 
-## Getting Started (Local Dev)
+### Backend
+- Cloudflare Workers
+- Resend
 
-### Prerequisites
-- Node.js + npm
+### Infrastructure
+- GitHub Pages (static hosting)
+- GitHub Actions (CI deployment)
+- Cloudflare DNS
+
+## Contact
+
+I'm always open to discussing projects, ideas, or opportunities.
+
+You can reach me through the website contact form:
+https://ryearmstrong.com
+
+You can also email me directly at: 
+brynn@rmstrng.com
+
 
 ## Credits / Assets
-- Background render created by me in Blender (guided by a tutorial):
-  - "Create Easy Hexagon Grids in Blender 3.0 Geometrynodes!" by Cartesian Caramel: https://www.youtube.com/watch?v=T0HAw0EJMUs
-- HDRI environment:
-  - "Beach Parking" - Greg Zaal & Rico Cilliers (Poly Haven): https://polyhaven.com/a/beach_parking
-- Favicon
-  - "material-symbols-light:terminal-sharp" by Google's material-design-icons: https://icones.js.org/collection/all?s=terminal&icon=material-symbols-light:terminal-sharp
+- Background render created by me in Blender (guided by a tutorial):  
+  _Create Easy Hexagon Grids in Blender 3.0 Geometrynodes!_ - Cartesian Caramel: 
+  https://www.youtube.com/watch?v=T0HAw0EJMUs
+- HDRI environment:  
+  _Beach Parking_ - Greg Zaal & Rico Cilliers (Poly Haven): 
+  https://polyhaven.com/a/beach_parking
+- Favicon:  
+  _material-symbols-light:terminal-sharp_ - Google Material Design Icons: 
+  https://icones.js.org/collection/all?s=terminal&icon=material-symbols-light:terminal-sharp
