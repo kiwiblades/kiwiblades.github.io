@@ -47,7 +47,6 @@ export default function Home({ onNavigate }: { onNavigate: (p: Page) => void }) 
     </>
   )
 
-  const CONTACT_EMAIL = "mailto:brynn@rmstrng.com";
   const REPO = "https://github.com/kiwiblades/kiwiblades.github.io"
 
 
@@ -164,7 +163,6 @@ export default function Home({ onNavigate }: { onNavigate: (p: Page) => void }) 
               </h2>
               <p className="mt-3 text-sm text-zinc-300 leading-relaxed">
                 If you're hiring, collaborating, or just want to say hi, send a message here.
-                (Or use the email button below.)
               </p>
 
               <form onSubmit={onSubmitContact} className="mt-6 space-y-3">
@@ -211,10 +209,6 @@ export default function Home({ onNavigate }: { onNavigate: (p: Page) => void }) 
                   >
                     {status === "sending" ? "Sending..." : "Send message"}
                   </button>
-
-                  <a href={CONTACT_EMAIL} className={secondaryBtn}>
-                    Email me instead
-                  </a>
 
                   {status === "sent" && (
                     <span className="text-sm text-emerald-300">Sent! I'll get back to you.</span>
