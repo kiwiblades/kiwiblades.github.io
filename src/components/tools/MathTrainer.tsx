@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
-import type { ArithmeticConfig, PresetId, SessionState } from "../../trainer/types";
-import { PRESETS } from "../../trainer/presets";
-import { startSession, submitAnswer, finishSession } from "../../trainer/engine/session";
+import type { ArithmeticConfig, PresetId, SessionState } from "../../tools_logic/trainer/types";
+import { PRESETS } from "../../tools_logic/trainer/presets";
+import { startSession, submitAnswer, finishSession } from "../../tools_logic/trainer/engine/session";
 
 export default function MathTrainer() {
     // ---- config state ----

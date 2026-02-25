@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { fetchShortages, formatYmd, type OpenFdaShortage } from "../../openfda/shortages";
+import { fetchShortages, formatYmd, type OpenFdaShortage } from "../../tools_logic/openfda/shortages";
 
 export default function DrugShortage() {
     const [query, setQuery] = useState("");
